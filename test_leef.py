@@ -29,7 +29,7 @@ class TestSequenceFunctions(unittest.TestCase):
 
         expected = header + attributes
 
-        test_string = self.l._createEventString("1989", keys)
+        test_string = self.l.logEvent("1989", keys)
         self.assertEqual(test_string, expected)
 
 

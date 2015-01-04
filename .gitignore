@@ -55,3 +55,5 @@ target/
 
 # ignore vim swp files
 *.swp
+
+*,cover

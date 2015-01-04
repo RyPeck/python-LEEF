@@ -42,7 +42,7 @@ class Logger:
     def _createEventString(self, event_id, keys):
         header = self._createHeader(event_id)
 
-        values = sorted([(str(k) + "=" + str(v)) for k, v in keys.iteritems()])
+        values = sorted([(str(k) + "=" + str(v)) for k, v in iter(keys.items())])
 
         payload = '\t'.join(values)
 
