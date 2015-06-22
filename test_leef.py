@@ -4,7 +4,12 @@ import leef
 
 class TestSequenceFunctions(unittest.TestCase):
     def setUp(self):
-        self.l = leef.Logger("TestVendor", "TestName", leef.__version__)
+        self.l = leef.LEEF_Logger("TestVendor", "TestName", leef.__version__)
+
+    def test_delimeter_error(self):
+        with self.assertRaises(ValueError) as cm:
+            leef.LEEF_Logger("TestVendor", "TestName", leef.__version__,
+                             delimiter="a")
 
     def testLogger(self):
         self.assertEqual(self.l.product_vendor, "TestVendor")

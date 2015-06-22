@@ -13,8 +13,8 @@ from __future__ import print_function
 __version__ = '0.0.1'
 
 
-class Logger:
-    """LEEFLOGGER"""
+class LEEF_Logger:
+    """LEEF LOGGER"""
 
     # LEEF Headers
     version_major = None
@@ -24,7 +24,7 @@ class Logger:
     product_version = None
 
     def __init__(self, product_vendor, product_name, product_version,
-                 version_major=1, version_minor=0):
+                 version_major=1, version_minor=0, delimiter="\t"):
         """ Define the LEEF Headers for the application logging """
 
         self.version_major = version_major
@@ -32,6 +32,10 @@ class Logger:
         self.product_vendor = product_vendor
         self.product_name = product_name
         self.product_version = product_version
+
+        if delimiter not in ['\t', '|', '^']:
+            raise ValueError("Delimeter must be '\\t', '|' or '^'")
+        self.delimiter = delimiter
 
     def logEvent(self, event_id, keys):
         """
@@ -42,7 +46,8 @@ class Logger:
     def _createEventString(self, event_id, keys):
         header = self._createHeader(event_id)
 
-        values = sorted([(str(k) + "=" + str(v)) for k, v in iter(keys.items())])
+        values = sorted([(str(k) + "=" + str(v))
+                         for k, v in iter(keys.items())])
 
         payload = '\t'.join(values)
 
