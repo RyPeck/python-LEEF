@@ -10,7 +10,7 @@ Currently can only use to construct a properly formatted LEEF Log message.
 from __future__ import print_function
 
 
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 
 
 class LEEF_Logger:
